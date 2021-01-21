@@ -1,6 +1,6 @@
 spring:
   application:
-    name: daemuMall-authcenter
+    name: daemumall-authcenter
   profiles:
     active: dev
   cloud:

@@ -27,12 +27,8 @@ import java.security.KeyPair;
 import java.util.Arrays;
 
 /**
-* @vlog: 高于生活，源于生活
-* @desc: 类的描述:认证服务器配置
-* @author: smlz
-* @createDate: 2020/1/21 21:48
-* @version: 1.0
-*/
+ * 认证服务器配置
+ */
 @Configuration
 @EnableAuthorizationServer
 @EnableConfigurationProperties(value = JwtCAProperties.class)
@@ -53,39 +49,45 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
 
 
     /**
-     * 方法实现说明:我们颁发的token通过jwt存储
+     * 我们颁发的token通过jwt存储  返回{@link TokenStore}
      */
     @Bean
-    public TokenStore tokenStore(){
+    public TokenStore tokenStore() {
         return new JwtTokenStore(jwtAccessTokenConverter());
     }
 
+    /**
+     * {@link AuthServerConfig#tokenStore()}
+      */
     @Bean
     public JwtAccessTokenConverter jwtAccessTokenConverter() {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-        //jwt的密钥
+        // jwt的密钥
         converter.setKeyPair(keyPair());
         return converter;
     }
 
+    /**
+     *   jwt的密钥 keyPair ->jwtAccessTokenConverter {@link   }
+      */
+
     @Bean
     public KeyPair keyPair() {
         KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(new ClassPathResource(jwtCAProperties.getKeyPairName()), jwtCAProperties.getKeyPairSecret().toCharArray());
-        System.out.println(jwtCAProperties.getKeyPairAlias()+"==============");
         return keyStoreKeyFactory.getKeyPair(jwtCAProperties.getKeyPairAlias(), jwtCAProperties.getKeyPairStoreSecret().toCharArray());
     }
 
-
+    // jwt自定义增强器
     @Bean
     public AuthTokenEnhancer authTokenEnhancer() {
         return new AuthTokenEnhancer();
     }
 
 
-
     /**
      * 方法实现说明:认证服务器能够给哪些 客户端颁发token  我们需要把客户端的配置 存储到
      * 数据库中 可以基于内存存储和db存储
+     *
      * @author:smlz
      * @return:
      * @exception:
@@ -97,11 +99,7 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
     }
 
     /**
-     * 方法实现说明:用于查找我们第三方客户端的组件 主要用于查找 数据库表 oauth_client_details
-     * @author:smlz
-     * @return:
-     * @exception:
-     * @date:2020/1/15 20:19
+     *  用于查找我们第三方客户端的组件 主要用于查找 数据库表 oauth_client_details
      */
     @Bean
     public ClientDetailsService clientDetails() {
@@ -109,17 +107,13 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
     }
 
     /**
-     * 方法实现说明:授权服务器的配置的配置
-     * @author:smlz
-     * @return:
-     * @exception:
-     * @date:2020/1/15 20:21
+     *  授权服务器的配置的配置
      */
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 
         TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
-        tokenEnhancerChain.setTokenEnhancers(Arrays.asList(authTokenEnhancer(),jwtAccessTokenConverter()));
+        tokenEnhancerChain.setTokenEnhancers(Arrays.asList(authTokenEnhancer(), jwtAccessTokenConverter()));
 
         endpoints.tokenStore(tokenStore()) //授权服务器颁发的token 怎么存储的
                 .tokenEnhancer(tokenEnhancerChain)
@@ -130,6 +124,7 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
 
     /**
      * 方法实现说明:授权服务器安全配置
+     *
      * @author:smlz
      * @return:
      * @exception:
@@ -138,8 +133,8 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         //第三方客户端校验token需要带入 clientId 和clientSecret来校验
-        security .checkTokenAccess("isAuthenticated()")
-                 .tokenKeyAccess("isAuthenticated()");//来获取我们的tokenKey需要带入clientId,clientSecret
+        security.checkTokenAccess("isAuthenticated()")
+                .tokenKeyAccess("isAuthenticated()");//来获取我们的tokenKey需要带入clientId,clientSecret
 
         security.allowFormAuthenticationForClients();
     }
