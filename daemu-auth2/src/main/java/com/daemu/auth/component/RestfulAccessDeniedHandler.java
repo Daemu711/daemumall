@@ -1,7 +1,7 @@
 package com.daemu.auth.component;
 
 import cn.hutool.json.JSONUtil;
-import com.tuling.tulingmall.common.api.CommonResult;
+import com.daemu.commons.api.CommonResult;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
 

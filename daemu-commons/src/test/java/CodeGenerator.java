@@ -46,10 +46,12 @@ public class CodeGenerator {
         mpg.setGlobalConfig(gc);
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://192.168.1.50:3306/asis?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC&nullCatalogMeansCurrent=true");
+//        dsc.setUrl("jdbc:mysql://192.168.1.50:3306/asis?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC&nullCatalogMeansCurrent=true");
+        dsc.setUrl("jdbc:mysql://localhost:3306/daemu?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC&nullCatalogMeansCurrent=true");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
-        dsc.setPassword("mosty888");
+//        dsc.setPassword("mosty888");
+        dsc.setPassword("123456");
         dsc.setDbType(DbType.MYSQL);
         mpg.setDataSource(dsc);
         // 包配置
@@ -65,7 +67,7 @@ public class CodeGenerator {
 
         //4、 数据表配置
         StrategyConfig strategy = new StrategyConfig();
-        strategy.setInclude("risk_library");//设置要映射的表
+        strategy.setInclude("sys_user");//设置要映射的表
         strategy.setNaming(NamingStrategy.underline_to_camel);//驼峰命名
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         strategy.setEntityLombokModel(true);//lombok

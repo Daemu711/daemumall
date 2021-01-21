@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: daemuMall-authcenter
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        server-addr: localhost:8848
+        file-extension: yml
+#        shared-dataids: daemu-db-common.yml,tulingmall-nacos.yml
+#        refreshable-dataids: daemu-db-common-dev.yml,tulingmall-nacos.yml
+logging:
+  level:
+    com:
+     alibaba:
+      cloud:
+        nacos:
+          client: warn
