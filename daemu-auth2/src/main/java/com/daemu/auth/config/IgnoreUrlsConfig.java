@@ -15,7 +15,7 @@ import java.util.List;
 @Setter
 @ConfigurationProperties(prefix = "secure.ignored")
 public class IgnoreUrlsConfig {
-
+    // 123
     private List<String> urls = new ArrayList<>();
 
 }
