@@ -80,11 +80,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 
+    /**
+     *  自定义返回结果：没有权限访问时
+     * {@link RestfulAccessDeniedHandler }
+     * @return
+     */
     @Bean
     public RestfulAccessDeniedHandler restfulAccessDeniedHandler() {
         return new RestfulAccessDeniedHandler();
     }
 
+    /**
+     *  {@link RestAuthenticationEntryPoint }
+     * @return
+     */
     @Bean
     public RestAuthenticationEntryPoint restAuthenticationEntryPoint() {
         return new RestAuthenticationEntryPoint();

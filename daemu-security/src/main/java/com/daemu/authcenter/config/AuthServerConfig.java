@@ -52,25 +52,28 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
      * 我们颁发的token通过jwt存储  返回{@link TokenStore}
      */
     @Bean
-    public TokenStore tokenStore() {
+    public TokenStore tokenStore(){
         return new JwtTokenStore(jwtAccessTokenConverter());
     }
 
     /**
-     * {@link AuthServerConfig#tokenStore()}
+     *  定义jwt的生成方式
+     *  jwt -> {@link AuthServerConfig#tokenStore()}
       */
+    /**
+     *
+     */
     @Bean
     public JwtAccessTokenConverter jwtAccessTokenConverter() {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-        // jwt的密钥
+        //jwt的密钥
         converter.setKeyPair(keyPair());
         return converter;
     }
 
     /**
-     *   jwt的密钥 keyPair ->jwtAccessTokenConverter {@link   }
+     *   jwt的密钥 keyPair ->{@link AuthServerConfig#jwtAccessTokenConverter()  }
       */
-
     @Bean
     public KeyPair keyPair() {
         KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(new ClassPathResource(jwtCAProperties.getKeyPairName()), jwtCAProperties.getKeyPairSecret().toCharArray());
@@ -87,11 +90,6 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
     /**
      * 方法实现说明:认证服务器能够给哪些 客户端颁发token  我们需要把客户端的配置 存储到
      * 数据库中 可以基于内存存储和db存储
-     *
-     * @author:smlz
-     * @return:
-     * @exception:
-     * @date:2020/1/15 20:18
      */
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
@@ -124,11 +122,6 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
 
     /**
      * 方法实现说明:授权服务器安全配置
-     *
-     * @author:smlz
-     * @return:
-     * @exception:
-     * @date:2020/1/15 20:23
      */
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {

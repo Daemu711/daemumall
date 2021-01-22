@@ -16,4 +16,4 @@ logging:
      alibaba:
       cloud:
         nacos:
-          client: warn
+          client: debug
