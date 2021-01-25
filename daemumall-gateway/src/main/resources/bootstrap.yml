@@ -1,0 +1,17 @@
+server:
+  port:
+spring:
+  application:
+    name: daemumall-gateway
+  cloud:
+      nacos:
+        config:
+          server-addr: localhost:8848 #配置中心的地址
+          group: DAEMU_GROUP
+#          file-extension: yml #配置文件结尾的配置
+        discovery:
+          server-addr: localhost:8848
+          group: DAEMU_GROUP
+  profiles:
+    active: dev
+

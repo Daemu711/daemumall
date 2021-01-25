@@ -12,7 +12,6 @@ import java.util.Date;
  * @create: 2021-01-19 22:51
  **/
 @Data
-@Builder
 public class SysUser {
     private Long id;
 

@@ -1,15 +1,22 @@
+server:
+  port: 9999
+  servlet:
+    context-path: /authcenter
 spring:
   application:
-    name: daemumall-authcenter
+    name: daemu-security
   profiles:
     active: dev
   cloud:
     nacos:
       config:
         server-addr: localhost:8848
-        file-extension: yml
-#        shared-dataids: daemu-db-common.yml,tulingmall-nacos.yml
-#        refreshable-dataids: daemu-db-common-dev.yml,tulingmall-nacos.yml
+#        prefix: daemu-security
+#        file-extension: yml
+        group: DAEMU_GROUP
+      discovery:
+        server-addr: localhost:8848
+        group: DAEMU_GROUP
 logging:
   level:
     com:

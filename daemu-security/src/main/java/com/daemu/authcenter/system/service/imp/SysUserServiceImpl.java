@@ -27,6 +27,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
     @Override
     public SysUser findUserByUsername(String username) {
         SysUser user = userMapper.selectOne(new QueryWrapper<SysUser>().eq("username", username));
+//        SysUser user = userMapper.selectOneByUsername(username);
         return user;
     }
 }
