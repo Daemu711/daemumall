@@ -3,7 +3,7 @@ spring:
     host: localhost
     database: 0
     port: 6379
-    password:
+    password: 123456
     timeout: 300ms
   boot:
     admin:
@@ -33,3 +33,24 @@ redis:
     resourceList: 'ums:resourceList'
   expire:
     common: 86400 # 24小时
+
+# 过滤不需要认证路径条件
+secure:
+  ignored:
+    urls: #安全路径白名单
+      - /swagger-ui.html
+      - /swagger-resources/**
+      - /swagger/**
+      - /**/v2/api-docs
+      - /**/*.js
+      - /**/*.css
+      - /**/*.png
+      - /**/*.ico
+      - /webjars/springfox-swagger-ui/**
+      - /actuator/**
+      - /druid/**
+      - /admin/login
+      - /admin/register
+      - /admin/info
+      - /admin/logout
+      - /minio/upload
