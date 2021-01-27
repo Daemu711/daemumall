@@ -15,19 +15,6 @@
         <knife4j-spring-boot-starter.version>2.0.3</knife4j-spring-boot-starter.version>
     </properties>
     <dependencies>
-        <!--mybatis-plus 代码自动生成 -->
-        <!--MP代码自动生成-->
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-generator</artifactId>
-            <version>3.3.0</version>
-        </dependency>
-        <!-- 模板引擎 -->
-        <dependency>
-            <groupId>org.apache.velocity</groupId>
-            <artifactId>velocity-engine-core</artifactId>
-            <version>2.2</version>
-        </dependency>
         <!-- fastjson -->
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -37,12 +24,6 @@
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-        </dependency>
-        <!--   mysql-connector  -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
         </dependency>
         <!--     druid   -->
         <dependency>
@@ -73,6 +54,16 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!--Spring boot 安全框架-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
     </dependencies>
 

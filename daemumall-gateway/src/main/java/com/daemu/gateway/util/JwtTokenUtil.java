@@ -1,7 +1,7 @@
 package com.daemu.gateway.util;
 
 import com.daemu.commons.api.ResultCode;
-import com.daemu.commons.exception.BadRequestException;
+import com.daemu.commons.exception.BusinessException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import org.slf4j.Logger;
@@ -58,7 +58,7 @@ public class JwtTokenUtil {
     public String getUserNameFromToken(String token) {
         LOGGER.error("JWT格式验证失败:{}", token);
         if (!token.startsWith(this.tokenHead)) {
-            throw new BadRequestException(ResultCode.UNAUTHORIZED);
+            throw new BusinessException(ResultCode.UNAUTHORIZED);
         }
         String authToken = token.substring(this.tokenHead.length());
         String username;

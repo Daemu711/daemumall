@@ -65,7 +65,7 @@ public class CodeGenerator {
 
         //4、 数据表配置
         StrategyConfig strategy = new StrategyConfig();
-        strategy.setInclude("risk_meet");//设置要映射的表
+        strategy.setInclude("risk_report_feedback");//设置要映射的表
         strategy.setNaming(NamingStrategy.underline_to_camel);//驼峰命名
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         strategy.setEntityLombokModel(true);//lombok

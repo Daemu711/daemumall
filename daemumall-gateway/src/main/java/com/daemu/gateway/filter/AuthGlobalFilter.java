@@ -2,7 +2,7 @@ package com.daemu.gateway.filter;
 
 
 import com.daemu.commons.api.ResultCode;
-import com.daemu.commons.exception.BadRequestException;
+import com.daemu.commons.exception.BusinessException;
 import com.daemu.gateway.config.IgnoreUrlsConfig;
 import com.daemu.gateway.util.JwtTokenUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -65,7 +65,7 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
         String token = request.getHeaders().getFirst(tokenHeader);
         if (StringUtils.isBlank(token)){
             log.error("token = {}",token);
-            throw new BadRequestException(ResultCode.UNAUTHORIZED);
+            throw new BusinessException(ResultCode.UNAUTHORIZED);
         }
         String username = jwtTokenUtil.getUserNameFromToken(token);
         // 待抽离
@@ -73,7 +73,7 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
         String resultToken = stringRedisTemplate.opsForValue().get(key);
         if (StringUtils.isBlank(resultToken)) {
             log.error("resultToken = {}",resultToken);
-            throw new BadRequestException(ResultCode.UNAUTHORIZED);
+            throw new BusinessException(ResultCode.UNAUTHORIZED);
         }
         log.error("resultToken = {}",resultToken);
         return chain.filter(exchange);

@@ -27,25 +27,28 @@ import static org.springframework.http.HttpStatus.BAD_REQUEST;
  * 统一异常处理
  */
 @Getter
-public class BadRequestException extends RuntimeException{
+public class BusinessException extends RuntimeException{
     private IErrorCode errorCode;
 
-    public BadRequestException(){super();}
+    public BusinessException(){super();}
 
-    public BadRequestException(String message) {
+    public BusinessException(String message) {
         super(message);
     }
 
-    public BadRequestException(IErrorCode errorCode) {
+    public BusinessException(IErrorCode errorCode) {
         super(errorCode.getMessage());
         this.errorCode = errorCode;
     }
-
-    public BadRequestException(Throwable cause) {
+    public BusinessException(IErrorCode errorCode, Throwable cause) {
+        super(errorCode.getMessage(),cause);
+        this.errorCode = errorCode;
+    }
+    public BusinessException(Throwable cause) {
         super(cause);
     }
 
-    public BadRequestException(String message, Throwable cause) {
+    public BusinessException(String message, Throwable cause) {
         super(message, cause);
     }
 

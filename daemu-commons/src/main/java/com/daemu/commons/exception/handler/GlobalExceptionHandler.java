@@ -15,14 +15,12 @@
  */
 package com.daemu.commons.exception.handler;
 
-import com.daemu.commons.api.CommonResult;
 import com.daemu.commons.api.IErrorCode;
-import com.daemu.commons.exception.BadRequestException;
+import com.daemu.commons.exception.BusinessException;
 import com.daemu.commons.utils.ThrowableUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.lang.Nullable;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -31,8 +29,6 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import java.util.Objects;
-
-import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 /**
  * @author Zheng Jie
@@ -66,8 +62,8 @@ public class GlobalExceptionHandler {
     /**
      * 处理自定义异常
      */
-	@ExceptionHandler(value = BadRequestException.class)
-	public ResponseEntity<ApiError> badRequestException(BadRequestException e) {
+	@ExceptionHandler(value = BusinessException.class)
+	public ResponseEntity<ApiError> businessException(BusinessException e) {
         // 打印堆栈信息
         IErrorCode errorCode = e.getErrorCode();
         log.error(ThrowableUtil.getStackTrace(e));
