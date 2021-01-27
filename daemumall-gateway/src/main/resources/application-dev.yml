@@ -5,12 +5,18 @@ spring:
     port: 6379
     password: 123456
     timeout: 300ms
-  boot:
-    admin:
-      client:
-        # admin 服务端的地址
-        url: http://localhost:8095
-
+#  boot:
+#    admin:
+#      client:
+#        # admin 服务端的地址
+#        url: http://localhost:8095
+  cloud:
+    gateway:
+      routes:
+        - id: path_route
+          uri: http://localhost:9999
+          predicates:
+            - Path=/api/auth/**
 management:
   endpoints:
     web:

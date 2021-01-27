@@ -26,16 +26,8 @@
                     <artifactId>pagehelper-spring-boot-starter</artifactId>
                 </exclusion>
                 <exclusion>
-                    <artifactId>spring-security-web</artifactId>
-                    <groupId>org.springframework.security</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>mysql-connector-java</artifactId>
-                    <groupId>mysql</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>mybatis-plus-generator</artifactId>
-                    <groupId>com.baomidou</groupId>
+                    <artifactId>druid-spring-boot-starter</artifactId>
+                    <groupId>com.alibaba</groupId>
                 </exclusion>
             </exclusions>
         </dependency>
