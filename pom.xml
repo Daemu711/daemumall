@@ -22,6 +22,8 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
+        <spring.cloud.version>Greenwich.RELEASE</spring.cloud.version>
+        <spring-cloud-alibaba.version>2.1.2.RELEASE</spring-cloud-alibaba.version>
         <java.version>1.8</java.version>
         <pagehelper-starter.version>1.2.10</pagehelper-starter.version>
         <hutool.version>4.5.7</hutool.version>
@@ -29,41 +31,60 @@
         <spring-data-commons.version>2.1.5.RELEASE</spring-data-commons.version>
         <jjwt.version>0.9.0</jjwt.version>
         <aliyun-oss.version>2.5.0</aliyun-oss.version>
-        <spring-cloud.version>Greenwich.SR3</spring-cloud.version>
-        <pagehelper.version>5.1.8</pagehelper.version>
-        <spring-cloud-alibaba.version>2.1.1.RELEASE</spring-cloud-alibaba.version>
         <!--mybatis-plus-->
+        <pagehelper.version>5.1.8</pagehelper.version>
         <mybatis-plus.version>3.3.0</mybatis-plus.version>
         <spring.boot.admin.version>2.1.6</spring.boot.admin.version>
-        <log4jdbc.version>1.16</log4jdbc.version>
+        <logstash-logback.version>5.2</logstash-logback.version>
     </properties>
 
 <dependencyManagement>
     <dependencies>
-        <!--MyBatis分页插件starter-->
+
+        <!--Spring Cloud 相关依赖-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-dependencies</artifactId>
+            <version>${spring.cloud.version}</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+            <version>${spring-cloud-alibaba.version}</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+
+        <!--MyBatis分页pagehelper插件starter-->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>${pagehelper-starter.version}</version>
         </dependency>
+
         <!--Hutool Java工具包-->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>${hutool.version}</version>
         </dependency>
+
         <!--集成druid连接池-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
             <version>${druid.version}</version>
         </dependency>
+
         <!--SpringData工具包-->
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-commons</artifactId>
             <version>${spring-data-commons.version}</version>
         </dependency>
+
         <!--#######数据驱动#########-->
         <!-- mybatis-plus -->
         <dependency>
@@ -76,6 +97,7 @@
             <artifactId>mybatis-plus-extension</artifactId>
             <version>${mybatis-plus.version}</version>
         </dependency>
+
         <!--JWT(Json Web Token)登录支持-->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
@@ -88,21 +110,7 @@
             <artifactId>aliyun-sdk-oss</artifactId>
             <version>${aliyun-oss.version}</version>
         </dependency>
-        <!--Spring Cloud 相关依赖-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-dependencies</artifactId>
-            <version>${spring-cloud.version}</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-            <version>${spring-cloud-alibaba.version}</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
+
         <!-- spring boot admin server -->
         <dependency>
             <groupId>de.codecentric</groupId>
@@ -114,6 +122,13 @@
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-client</artifactId>
             <version>${spring.boot.admin.version}</version>
+        </dependency>
+
+        <!--集成logstash-->
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>${logstash-logback.version}</version>
         </dependency>
     </dependencies>
 </dependencyManagement>
