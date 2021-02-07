@@ -6,10 +6,9 @@
     <packaging>pom</packaging>
     <modules>
         <module>daemu-commons</module>
-        <module>daemu-security</module>
-        <module>daemu-auth2</module>
         <module>daemumall-gateway</module>
         <module>daemu-mbg</module>
+        <module>daemu-ums</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
