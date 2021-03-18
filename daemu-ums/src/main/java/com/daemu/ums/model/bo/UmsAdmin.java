@@ -1,6 +1,7 @@
-package com.daemu.ums.model;
+package com.daemu.ums.model.bo;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -47,7 +48,7 @@ public class UmsAdmin implements Serializable {
     private String note;
 
     @ApiModelProperty(value = "创建时间")
-    private Date createTime;
+    private LocalDateTime createTime;
 
     @ApiModelProperty(value = "最后登录时间")
     private Date loginTime;

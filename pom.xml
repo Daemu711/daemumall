@@ -9,6 +9,7 @@
         <module>daemumall-gateway</module>
         <module>daemu-mbg</module>
         <module>daemu-ums</module>
+        <module>daemu-security</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -36,6 +37,7 @@
         <mybatis-plus.version>3.3.0</mybatis-plus.version>
         <spring.boot.admin.version>2.1.6</spring.boot.admin.version>
         <logstash-logback.version>5.2</logstash-logback.version>
+        <mall.version>0.0.1-SNAPSHOT</mall.version>
     </properties>
 
 <dependencyManagement>

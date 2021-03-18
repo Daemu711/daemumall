@@ -15,7 +15,7 @@
         <dependency>
             <groupId>com.liu.daemu</groupId>
             <artifactId>daemu-commons</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${mall.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>

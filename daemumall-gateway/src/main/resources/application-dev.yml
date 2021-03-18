@@ -28,7 +28,7 @@ management:
       show-details: always
 jwt:
   tokenHeader: Authorization
-  secret: mall-admin-secret
+  secret: daemumall-gateway
   expiration: 604800
   tokenHead: Bearer
 redis:

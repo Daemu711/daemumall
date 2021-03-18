@@ -1,7 +1,7 @@
 package com.daemu.ums.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.daemu.ums.model.UmsAdmin;
+import com.daemu.ums.model.bo.UmsAdmin;
 
 /**
  * <p>
