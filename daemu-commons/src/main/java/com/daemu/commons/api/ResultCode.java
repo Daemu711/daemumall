@@ -18,18 +18,20 @@ public enum ResultCode implements IErrorCode {
     BACKGROUD_DEGRADE_ERROR(604,"后端服务触发降级"),
     BAD_GATEWAY(502,"网关服务异常"),
     FORBIDDEN(403, "没有相关权限");
-    private long code;
+    private Integer code;
     private String message;
 
-    private ResultCode(long code, String message) {
+    private ResultCode(Integer code, String message) {
         this.code = code;
         this.message = message;
     }
 
-    public long getCode() {
+    @Override
+    public Integer getCode() {
         return code;
     }
 
+    @Override
     public String getMessage() {
         return message;
     }
