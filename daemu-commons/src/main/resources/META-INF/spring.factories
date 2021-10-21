@@ -1,4 +1,3 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
- com.daemu.commons.log.LogPrintAspect,\
- com.daemu.commons.config.LocalDateTimeSerializerConfig,\
- com.daemu.commons.config.GlobalExceptionHandler
+#org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+# com.daemu.commons.log.LogPrintAspect,\
+# com.daemu.commons.config.GlobalExceptionHandler

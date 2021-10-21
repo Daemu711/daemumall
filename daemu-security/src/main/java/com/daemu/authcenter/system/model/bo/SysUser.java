@@ -1,5 +1,6 @@
 package com.daemu.authcenter.system.model.bo;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Builder;
 import lombok.Data;
@@ -12,7 +13,7 @@ import java.util.Date;
  * @create: 2021-01-19 22:51
  **/
 @Data
-@Builder
+@TableName("sys_user")
 public class SysUser {
     private Long id;
 

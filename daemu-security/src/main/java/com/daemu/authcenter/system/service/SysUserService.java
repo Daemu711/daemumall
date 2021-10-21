@@ -12,6 +12,6 @@ import com.daemu.authcenter.system.model.bo.SysUser;
  * @author Deamu
  * @since 2021-01-19
  */
-public interface SysUserService extends IService<SysUser> {
+public interface SysUserService {
     SysUser findUserByUsername(String username);
 }
